@@ -24,7 +24,7 @@ config['classifiers'] = [
     'Topic :: Software Development :: Code Generators',
 ]
 
-setup(name='mosaicode',
+setup(name='mosaicode-javascript-webaudio',
       install_requires=['Python>=2.7'],
       tests_require=[],
       test_suite='',
