@@ -24,15 +24,15 @@ config['classifiers'] = [
     'Topic :: Software Development :: Code Generators',
 ]
 
-setup(name='mosaicode-javascript-webaudio',
+setup(name='mosaicode_javascript_webaudio',
       install_requires=['Python>=2.7'],
       tests_require=[],
       test_suite='',
       version='1.0',
       packages=[
-          'extensions',
-          'extensions.webaudio',
-          'extensions.ports'],
+          'mosaicode_javascript_webaudio',
+          'mosaicode_javascript_webaudio.webaudio',
+          'mosaicode_javascript_webaudio.ports'],
       scripts=[],
       description='Image Processing and Computer Vision \
       Automatic Programming Tool',
