@@ -17,11 +17,11 @@ class Char2Float(Plugin):
         self.help = "Char to Float"
         self.label = "Char 2 Float"
         self.color = "200:200:25:150"
-        self.in_ports = [{"type":"mosaicode.extensions.javascript.ports.char",
+        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.char",
                 "label":"Char Input",
                 "name":"char_input"}
                 ]
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.float",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float Output",
                 "name":"float_output"}
             ]

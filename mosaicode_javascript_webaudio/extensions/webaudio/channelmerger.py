@@ -18,14 +18,14 @@ class ChannelMerger(Plugin):
         self.label = "Channel Merger"
         self.color = "50:150:250:150"
 
-        self.in_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound Input 1",
                 "name":"sound_input_1"},
-                {"type":"mosaicode.extensions.javascript.ports.sound",
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound Input 2",
                 "name":"sound_input_2"}
                 ]
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound Output",
                 "name":"sound_output"}
             ]

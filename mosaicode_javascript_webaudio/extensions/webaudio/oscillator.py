@@ -17,16 +17,16 @@ class Oscillator(Plugin):
         self.help = "Sound output"
         self.label = "Oscillator"
         self.color = "50:150:250:150"
-        self.in_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                            "label":"Osc Frequency",
                            "name":"osc_freq"},
-                         {"type":"mosaicode.extensions.javascript.ports.float",
+                         {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                          "label":"Frequency",
                          "name":"freq"},
-                         {"type":"mosaicode.extensions.javascript.ports.float",
+                         {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                          "name":"type",
                          "label":"Type"}]
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                          "name":"sound",
                          "label":"Sound"}]
         self.group = "Sound"

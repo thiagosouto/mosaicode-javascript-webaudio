@@ -17,10 +17,10 @@ class Print(Plugin):
         self.help = "Print value"
         self.label = "Print"
         self.color = "50:150:250:150"
-        self.in_ports = [{"type":"mosaicode.extensions.javascript.ports.float",
+        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "name":"float_value",
                 "label":"Float Value"},
-                {"type":"mosaicode.extensions.javascript.ports.char",
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.char",
                 "name":"Char Value",
                 "label":"char_value"}
                 ]

@@ -17,11 +17,11 @@ class Midi2Freq(Plugin):
         self.help = "midi to freq"
         self.label = "Midi 2 Freq"
         self.color = "200:200:25:150"
-        self.in_ports = [{"type":"mosaicode.extensions.javascript.ports.float",
+        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "name":"midi_value",
                 "label":"Midi Value"}
                 ]
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.float",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Frequency",
                 "name":"frequency"}
             ]

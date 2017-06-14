@@ -18,14 +18,14 @@ class ADSR(Plugin):
         self.label = "ADSR"
         self.color = "50:150:250:150"
 
-        self.in_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound",
                 "name":"sound"},
-                {"type":"mosaicode.extensions.javascript.ports.float",
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Event Play",
                 "name":"play"}
                 ]
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound",
                 "name":"sound"}
             ]
