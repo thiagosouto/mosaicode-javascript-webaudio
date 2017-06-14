@@ -17,10 +17,10 @@ class KeyboardInput(Plugin):
         self.help = "Keyboard Input"
         self.label = "Keyboard Input"
         self.color = "50:150:250:150"
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.float",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float Output",
                 "name":"float_output"},
-                {"type":"mosaicode.extensions.javascript.ports.char",
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.char",
                 "label":"Char Output",
                 "name":"char_output"}
             ]

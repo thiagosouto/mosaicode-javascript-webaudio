@@ -17,7 +17,7 @@ class WhiteNoise(Plugin):
         self.help = "White Noise"
         self.label = "White Noise"
         self.color = "50:150:250:150"
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound",
                 "name":"sound"}
             ]

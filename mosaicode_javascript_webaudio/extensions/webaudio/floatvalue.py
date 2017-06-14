@@ -17,7 +17,7 @@ class FloatValue(Plugin):
         self.help = "Double value"
         self.label = "FloatValue"
         self.color = "50:150:250:150"
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.float",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float",
                 "name":"float"}
             ]

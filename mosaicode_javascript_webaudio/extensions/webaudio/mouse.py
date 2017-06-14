@@ -17,12 +17,12 @@ class Mouse(Plugin):
         self.help = "Mouse Position"
         self.label = "Mouse Position"
         self.color = "50:50:50:150"
-        self.out_types = ["mosaicode.extensions.javascript.ports.float", "mosaicode.extensions.javascript.ports.float"]
+        self.out_types = ["mosaicode_javascript_webaudio.extensions.ports.float", "mosaicode_javascript_webaudio.extensions.ports.float"]
         self.out_ports = [
-                {"type":"mosaicode.extensions.javascript.ports.float",
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "name":"x",
                 "label":"X"},
-                {"type":"mosaicode.extensions.javascript.ports.float",
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "name":"y",
                 "label":"Y"}
                 ]

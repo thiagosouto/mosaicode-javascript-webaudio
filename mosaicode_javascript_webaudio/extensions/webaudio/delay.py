@@ -17,11 +17,11 @@ class Delay(Plugin):
         self.help = "Delay"
         self.label = "Delay"
         self.color = "150:150:250:150"
-        self.in_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound",
                 "name":"sound"}
                 ]
-        self.out_ports = [{"type":"mosaicode.extensions.javascript.ports.sound",
+        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound",
                 "name":"sound"}
             ]
