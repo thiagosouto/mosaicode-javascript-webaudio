@@ -18,7 +18,7 @@ class Html(CodeTemplate):
         self.language = "javascript"
         self.description = "Javascript / webaudio code template"
         self.extension = ".html"
-        self.command = "chromium-browser $dir_name$$filename$$extension$\n"
+        self.command = "x-www-browser $dir_name$$filename$$extension$\n"
         self.code = r"""<html>
 <head>
 <meta http-equiv="Cache-Control" content="no-store" />
