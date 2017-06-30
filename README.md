@@ -1,19 +1,14 @@
 # mosaicode-javascript-webaudio
-======
 
 **This repository contains javascript plugins with the Web Audio API.**
 
 -------------
 </br>
 INSTALLATION:
--------------
-### Install
-To install this plugins, there is two options by terminal:
 
 | | Command |
 | :---: | :---: |
-| *Compacted:* | ``` tar -xvvzf mosaicode-javascript-webaudio-master.zip ``` |
-| *Cloning GitHub:* | `git clone https://github.com/Mosaicode/mosaicode-javascript-webaudio.git` </br> `git checkout newgui`|
+| *Cloning GitHub:* | `git clone https://github.com/Mosaicode/mosaicode-javascript-webaudio.git`|
 
 Then procede with instalation:
 ```
@@ -31,8 +26,7 @@ FURTHER INFO:
 -------------
 
 [Original page of Mosaicode project]
-(http://s2i.das.ufsc.br/mosaicode/en/home.html)
+(https://mosaicode.github.io/)
 
 or asking to:
-* scotti@ieee.org
-* fls@ufsj.edu.br
+* mosaicode-dev@googlegroups.com
