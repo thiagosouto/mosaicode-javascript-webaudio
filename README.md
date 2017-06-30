@@ -13,7 +13,7 @@ To install this plugins, there is two options by terminal:
 | | Command |
 | :---: | :---: |
 | *Compacted:* | ``` tar -xvvzf mosaicode-javascript-webaudio-master.zip ``` |
-| *Cloning GitHub:* | `git clone https://github.com/andgomes95/mosaicode-javascript-webaudio.git` </br> `git checkout newgui`|
+| *Cloning GitHub:* | `git clone https://github.com/Mosaicode/mosaicode-javascript-webaudio.git` </br> `git checkout newgui`|
 
 Then procede with instalation:
 ```
