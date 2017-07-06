@@ -4,13 +4,13 @@
 This module contains the KeyboardInput class.
 """
 from mosaicode.GUI.fieldtypes import *
-from mosaicode.model.plugin import Plugin
+from mosaicode.model.blockmodel import BlockModel
 
-class KeyboardInput(Plugin):
+class KeyboardInput(BlockModel):
 
     # --------------------------------------------------------------------------
     def __init__(self):
-        Plugin.__init__(self)
+        BlockModel.__init__(self)
 
         self.language = "javascript"
         self.framework = "webaudio"
