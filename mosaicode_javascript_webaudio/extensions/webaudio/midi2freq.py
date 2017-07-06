@@ -4,13 +4,13 @@
 This module contains the Midi2Freq class.
 """
 from mosaicode.GUI.fieldtypes import *
-from mosaicode.model.plugin import Plugin
+from mosaicode.model.blockmodel import BlockModel
 
-class Midi2Freq(Plugin):
+class Midi2Freq(BlockModel):
 
     # --------------------------------------------------------------------------
     def __init__(self):
-        Plugin.__init__(self)
+        BlockModel.__init__(self)
 
         self.language = "javascript"
         self.framework = "webaudio"
