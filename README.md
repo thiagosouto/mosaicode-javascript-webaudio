@@ -1,10 +1,10 @@
-# mosaicode-javascript-webaudio
+# Mosaicode Blocks: Javascript with Web Audio API
 
-**This repository contains javascript plugins with the Web Audio API.**
+**This repository contains Mosaicode Blocks to generate Javascript Code (Web Audio API).**
 
 -------------
-</br>
-INSTALLATION:
+
+### Installation
 
 | | Command |
 | :---: | :---: |
@@ -20,13 +20,10 @@ To uninstall Mosaicode WebAudio Plugins, execute at terminal:
 ```
 sudo ./uninstall.sh
 ```
---------------
-</br>
-FURTHER INFO:
--------------
 
-[Original page of Mosaicode project]
-(https://mosaicode.github.io/)
+### Further Info
+
+Original page of Mosaicode project: [https://mosaicode.github.io/](https://mosaicode.github.io/)
 
 or asking to:
 * mosaicode-dev@googlegroups.com
