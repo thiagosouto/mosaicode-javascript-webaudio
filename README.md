@@ -16,7 +16,7 @@ sudo python setup.py install
 ```
 
 ### Uninstall
-To uninstall Mosaicode WebAudio Plugins, execute at terminal:
+To uninstall, execute at terminal:
 ```
 sudo ./uninstall.sh
 ```
