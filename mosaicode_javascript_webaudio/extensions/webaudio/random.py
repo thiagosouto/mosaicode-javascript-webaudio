@@ -6,7 +6,7 @@ This module contains the FloatValue class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
-class FloatValue(BlockModel):
+class Random(BlockModel):
 
     # -------------------------------------------------------------------------
     def __init__(self):
@@ -14,27 +14,23 @@ class FloatValue(BlockModel):
 
         self.language = "javascript"
         self.framework = "webaudio"
-        self.help = "Double value"
-        self.label = "FloatValue"
-        self.color = "50:150:250:150"
+        self.help = "Random"
+        self.label = "Random"
+        self.color = "150:150:250:150"
         self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float",
                 "name":"float"}
             ]
+        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "label":"Generate",
+                "name":"generate"}
+            ]
         self.group = "Interface"
 
-        self.properties = [{"name": "value",
-                            "label": "Value",
-                            "type": MOSAICODE_FLOAT,
-                            "lower": 0,
-                            "upper": 20000,
-                            "step": 1,
-                            "value": 1
-                            },
-                           {"name": "min",
+        self.properties = [{"name": "min",
                             "label": "Min",
                             "type": MOSAICODE_FLOAT,
-                            "lower": 0,
+                            "lower": -20000,
                             "upper": 20000,
                             "step": 1,
                             "value": 1
@@ -42,33 +38,25 @@ class FloatValue(BlockModel):
                            {"name": "max",
                             "label": "Max",
                             "type": MOSAICODE_FLOAT,
-                            "lower": 00,
+                            "lower": -20000,
                             "upper": 20000,
                             "step": 1,
-                            "value": 10
-                            },
-                           {"name": "label",
-                            "label": "Label",
-                            "type": MOSAICODE_STRING,
-                            "value": "Label"
+                            "value": 1
                             }
                            ]
 
         self.codes["declaration"] = """
-// block_$id$ = Float Value
-var block_$id$_value = $prop[value]$;
+// block_$id$ = $label$
+var block_$id$_min = $prop[min]$;
+var block_$id$_max = $prop[max]$;
 var $out_ports[float]$ = [];
-"""
-        self.codes["execution"] = """
-function change_$id$_value(){
-    value = document.getElementById("block_$id$").value;
+
+var $in_ports[generate]$ = function(value){
+    value = Math.floor((Math.random() * (block_$id$_max - block_$id$_min)) + block_$id$_min);
     for (var i = 0; i < $out_ports[float]$.length ; i++){
         $out_ports[float]$[i](value);
     }
-};
-"""
-        self.codes["html"] = """
-$prop[label]$ <input type="number" id="block_$id$" value="$prop[value]$" min="$prop[min]$"
-        max="$prop[max]$" onChange="change_$id$_value();"><br>
-"""
+    return true;
+    };
 
+"""

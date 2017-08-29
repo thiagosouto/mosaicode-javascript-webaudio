@@ -26,12 +26,12 @@ class KeyboardInput(BlockModel):
             ]
         self.group = "Interface"
 
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = KeyBoard Input
 var $out_ports[char_output]$ = [];
 var $out_ports[float_output]$ = [];
 """
-        self.codes[2] = """
+        self.codes["execution"] = """
 document.onkeypress = function(evt){
     evt = evt || window.event;
     var value = evt.keyCode || evt.which;

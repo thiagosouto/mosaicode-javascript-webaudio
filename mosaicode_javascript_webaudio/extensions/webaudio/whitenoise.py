@@ -23,7 +23,7 @@ class WhiteNoise(BlockModel):
             ]
         self.group = "Sound"
 
-        self.codes[0] = """
+        self.codes["function"] = """
 WhiteNoise = function(context) {
   var that = this;
   this.x = 0; // Initial sample number
@@ -42,10 +42,11 @@ WhiteNoise.prototype.process = function(e) {
   }
 }
 """
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = $label$
-var block_$id$ =  new WhiteNoise(context);
+var block_$id$_obj =  new WhiteNoise(context);
+var block_$id$ =  block_$id$_obj.node;
 var $out_ports[sound]$ = null;
 """
 
-        self.codes[2] = "$out_ports[output]$ = block_$id$.node;\n"
+        self.codes["execution"] = "$out_ports[sound]$ = block_$id$.node;\n"

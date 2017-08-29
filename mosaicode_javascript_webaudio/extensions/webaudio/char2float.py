@@ -41,7 +41,7 @@ class Char2Float(BlockModel):
                            ]
         self.group = "Conversion"
 
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = Char 2 Float
 var $out_ports[float_output]$ = [];
 var $in_ports[char_input]$ = function(value){

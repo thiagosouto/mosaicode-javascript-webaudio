@@ -23,7 +23,7 @@ class Speaker(BlockModel):
             ]
         self.group = "Sound"
 
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = $label$
 var $in_ports[sound]$ = context.destination;
 """

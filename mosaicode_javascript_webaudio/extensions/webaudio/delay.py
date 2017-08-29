@@ -38,14 +38,14 @@ class Delay(BlockModel):
                             }
                            ]
 
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = Delay
 var block_$id$ = context.createDelay();
-var $out_ports[sound]$ = null;
-var $in_ports[sound]$ = null;
+block_$id$.delayTime.value = $prop[time]$;
+var $out_ports[sound]$ = block_$id$;
+var $in_ports[sound]$ = block_$id$;
 """
 
-        self.codes[2] = "$in_ports[sound]$ = block_$id$;\n" + \
-            "var block_$id$.delayTime.value = $prop[time]$\n;" + \
+        self.codes["execution"] = "$in_ports[sound]$ = block_$id$;\n" + \
             "$out_ports[sound]$ = block_$id$;\n"
 

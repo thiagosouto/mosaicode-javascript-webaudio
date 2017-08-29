@@ -32,7 +32,7 @@ class ChannelMerger(BlockModel):
 
         self.group = "Sound"
 
-        self.codes[0] = """
+        self.codes["function"] = """
 Merger = function(context) {
   var that = this;
   this.x = 0; // Initial sample number
@@ -49,7 +49,7 @@ Merger.prototype.process = function(e) {
   }
 }
 """
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = Channel Merger
 var block_$id$_obj = new Merger(context);
 var $out_ports[sound_output]$ = block_$id$_obj.node;

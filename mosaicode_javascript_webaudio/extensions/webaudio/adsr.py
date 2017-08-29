@@ -75,7 +75,7 @@ class ADSR(BlockModel):
              }
         ]
         
-        self.codes[0] = """
+        self.codes["function"] = """
 Envelope = function(context, a, d, s, r, g) {
 this.node = context.createGain()
 this.context = context;
@@ -104,9 +104,10 @@ time += this.r;
 this.node.gain.linearRampToValueAtTime(0, time);
 }
 """
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = $label$
 var block_$id$_obj = new Envelope(context, $prop[a]$, $prop[d]$, $prop[s]$, $prop[r]$, $prop[g]$);
+var block_$id$ =  block_$id$_obj.node;
 var $out_ports[sound]$ = block_$id$_obj.node;
 var $in_ports[sound]$ = block_$id$_obj.node;
 
