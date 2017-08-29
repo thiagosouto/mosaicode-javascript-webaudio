@@ -37,13 +37,13 @@ class Button(BlockModel):
                            ]
         self.group = "Interface"
 
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = $label$
 var block_$id$_value = $prop[value]$;
 var $out_ports[click]$ = [];
 """
 
-        self.codes[2] = """
+        self.codes["execution"] = """
 function click_$id$(){
     value = document.getElementById("block_$id$").value;
     for (var i = 0; i < $out_ports[click]$.length ; i++){
@@ -52,7 +52,7 @@ function click_$id$(){
 };
 """
 
-        self.codes[3] = """
+        self.codes["html"] = """
 <button type="button" value="$prop[value]$" onClick="click_$id$();"
 id="block_$id$">$prop[label]$</button><br>
 """

@@ -30,8 +30,7 @@ class DivideFloat(BlockModel):
             ]
         self.group = "Arithmetics"
 
-        self.codes[1] = """
-
+        self.codes["declaration"] = """
 // block_$id$ = Divide Float
 var block_$id$_arg1 = 0;
 var block_$id$_arg2 = 0;

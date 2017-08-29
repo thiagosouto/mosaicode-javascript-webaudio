@@ -26,7 +26,7 @@ class Midi2Freq(BlockModel):
                 "name":"frequency"}
             ]
         self.group = "Conversion"
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = $label$
 var $out_ports[frequency]$ = [];
 

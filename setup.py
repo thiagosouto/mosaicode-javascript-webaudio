@@ -29,11 +29,7 @@ setup(name='mosaicode_javascript_webaudio',
       tests_require=[],
       test_suite='',
       version='1.0',
-      packages=[
-          'mosaicode_javascript_webaudio',
-          'mosaicode_javascript_webaudio.extensions',
-          'mosaicode_javascript_webaudio.extensions.webaudio',
-          'mosaicode_javascript_webaudio.extensions.ports'],
+      packages = find_packages(exclude=["tests.*", "tests"]),
       scripts=[],
       description='Image Processing and Computer Vision \
       Automatic Programming Tool',

@@ -28,12 +28,12 @@ class Mouse(BlockModel):
                 ]
         self.group = "Interface"
 
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = Mouse
 var $out_ports[x]$ = [];
 var $out_ports[y]$ = [];
 """
-        self.codes[0] = """
+        self.codes["function"] = """
 // ----------------- Mouse position ----------------------------
 // Detect if the browser is IE or not.
 // If it is not IE, we assume that the browser is NS.

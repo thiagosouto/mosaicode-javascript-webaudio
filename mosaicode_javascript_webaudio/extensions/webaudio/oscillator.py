@@ -49,7 +49,7 @@ class Oscillator(BlockModel):
                             }
                            ]
 
-        self.codes[0] = """
+        self.codes["declaration"] = """
 // block_$id$ = Oscillator
 var block_$id$ =  context.createOscillator();
 var $in_ports[osc_freq]$ = block_$id$.frequency;
@@ -66,7 +66,7 @@ var $in_ports[type]$ = function(value){
     block_$id$.type = oscillator;
 };
 """
-        self.codes[1] = """
+        self.codes["execution"] = """
 $out_ports[sound]$ = block_$id$.frequency;
 block_$id$.type = '$prop[type]$';
 block_$id$.frequency.value = $prop[freq]$; // value in hertz

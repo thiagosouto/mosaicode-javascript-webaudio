@@ -40,7 +40,7 @@ class Gain(BlockModel):
 
         self.group = "Sound"
 
-        self.codes[1] = """
+        self.codes["declaration"] = """
 // block_$id$ = $label$
 var block_$id$ = context.createGain();
 var $out_ports[sound]$ = null;
@@ -51,5 +51,5 @@ var $in_ports[gain_value]$ = function(value){
     };
 """
 
-        self.codes[2] = "$out_ports[sound]$ = block_$id$;\n" + \
+        self.codes["execution"] = "$out_ports[sound]$ = block_$id$;\n" + \
             "block_$id$.gain.value = $prop[gain]$;\n"
