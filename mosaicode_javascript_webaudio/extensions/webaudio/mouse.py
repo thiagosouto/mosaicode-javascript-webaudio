@@ -18,11 +18,13 @@ class Mouse(BlockModel):
         self.label = "Mouse Position"
         self.color = "50:50:50:150"
         self.out_types = ["mosaicode_javascript_webaudio.extensions.ports.float", "mosaicode_javascript_webaudio.extensions.ports.float"]
-        self.out_ports = [
+        self.ports = [
                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Output",
                 "name":"x",
                 "label":"X"},
                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Output",
                 "name":"y",
                 "label":"Y"}
                 ]
@@ -30,8 +32,8 @@ class Mouse(BlockModel):
 
         self.codes["declaration"] = """
 // block_$id$ = Mouse
-var $out_ports[x]$ = [];
-var $out_ports[y]$ = [];
+var $port[x]$ = [];
+var $port[y]$ = [];
 """
         self.codes["function"] = """
 // ----------------- Mouse position ----------------------------
@@ -64,12 +66,12 @@ function getMouseXY(e) {
   if (tempY < 0){tempY = 0}
 
     // X value
-    for (var i = 0; i < $out_ports[x]$.length ; i++)
-        $out_ports[x]$[i](tempX);
+    for (var i = 0; i < $port[x]$.length ; i++)
+        $port[x]$[i](tempX);
 
     // Y value
-    for (var i = 0; i < $out_ports[y]$.length ; i++)
-        $out_ports[y]$[i](tempY);
+    for (var i = 0; i < $port[y]$.length ; i++)
+        $port[y]$[i](tempY);
   return true
 }
 // ----------------- Mouse position ----------------------------

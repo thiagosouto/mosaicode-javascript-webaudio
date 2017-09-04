@@ -17,8 +17,9 @@ class Button(BlockModel):
         self.help = "Button"
         self.label = "Button"
         self.color = "50:150:250:150"
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Click",
+                "conn_type":"Output",
                 "name":"click"}
             ]
         self.properties = [{"name": "value",
@@ -40,14 +41,14 @@ class Button(BlockModel):
         self.codes["declaration"] = """
 // block_$id$ = $label$
 var block_$id$_value = $prop[value]$;
-var $out_ports[click]$ = [];
+var $port[click]$ = [];
 """
 
         self.codes["execution"] = """
 function click_$id$(){
     value = document.getElementById("block_$id$").value;
-    for (var i = 0; i < $out_ports[click]$.length ; i++){
-        $out_ports[click]$[i](value);
+    for (var i = 0; i < $port[click]$.length ; i++){
+        $port[click]$[i](value);
     }
 };
 """

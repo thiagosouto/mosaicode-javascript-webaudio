@@ -17,14 +17,16 @@ class Inc(BlockModel):
         self.help = "Increment"
         self.label = "Increment"
         self.color = "150:150:250:150"
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float",
-                "name":"float"}
-            ]
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Output",
+                "name":"float"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Count",
+                "conn_type":"Input",
                 "name":"count"},
                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Input",
                 "label":"Value",
                 "name":"value"}
             ]
@@ -52,17 +54,17 @@ class Inc(BlockModel):
 // block_$id$ = $label$
 var block_$id$_value = $prop[value]$;
 var block_$id$_step = $prop[step]$;
-var $out_ports[float]$ = [];
+var $port[float]$ = [];
 
-var $in_ports[count]$ = function(value){
+var $port[count]$ = function(value){
     block_$id$_value += block_$id$_step;
-    for (var i = 0; i < $out_ports[float]$.length ; i++){
-        $out_ports[float]$[i](block_$id$_value);
+    for (var i = 0; i < $port[float]$.length ; i++){
+        $port[float]$[i](block_$id$_value);
     }
     return true;
     };
 
-var $in_ports[value]$ = function(value){
+var $port[value]$ = function(value){
     block_$id$_value = value;
     return true;
     };

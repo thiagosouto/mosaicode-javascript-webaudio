@@ -17,8 +17,9 @@ class FloatValue(BlockModel):
         self.help = "Double value"
         self.label = "FloatValue"
         self.color = "50:150:250:150"
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float",
+                "conn_type":"Output",
                 "name":"float"}
             ]
         self.group = "Interface"
@@ -57,13 +58,13 @@ class FloatValue(BlockModel):
         self.codes["declaration"] = """
 // block_$id$ = Float Value
 var block_$id$_value = $prop[value]$;
-var $out_ports[float]$ = [];
+var $port[float]$ = [];
 """
         self.codes["execution"] = """
 function change_$id$_value(){
     value = document.getElementById("block_$id$").value;
-    for (var i = 0; i < $out_ports[float]$.length ; i++){
-        $out_ports[float]$[i](value);
+    for (var i = 0; i < $port[float]$.length ; i++){
+        $port[float]$[i](value);
     }
 };
 """

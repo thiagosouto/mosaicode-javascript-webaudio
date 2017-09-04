@@ -17,15 +17,17 @@ class DivideFloat(BlockModel):
         self.help = "Divide Float"
         self.label = "Divide Float"
         self.color = "200:200:25:150"
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "name":"first_number",
+                "conn_type":"Input",
                 "label":"First Number"},
                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Input",
                 "name":"second_number",
-                "label":"Second Number"}
-                ]
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "label":"Second Number"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Result",
+                "conn_type":"Output",
                 "name":"result"}
             ]
         self.group = "Arithmetics"
@@ -34,26 +36,26 @@ class DivideFloat(BlockModel):
 // block_$id$ = Divide Float
 var block_$id$_arg1 = 0;
 var block_$id$_arg2 = 0;
-var $out_ports[result]$ = [];
+var $port[result]$ = [];
 
-var $in_ports[first_number]$ = function(value){
+var $port[first_number]$ = function(value){
     block_$id$_arg1 = parseFloat(value);
     block_$id$_arg2 = (parseFloat(block_$id$_arg2) == 0) ?
             1 : parseFloat(block_$id$_arg2);
     result = parseFloat(block_$id$_arg1) / parseFloat(block_$id$_arg2);
-    for (var i = 0; i < $out_ports[result]$.length ; i++){
-        $out_ports[result]$[i](result);
+    for (var i = 0; i < $port[result]$.length ; i++){
+        $port[result]$[i](result);
     }
     return true;
     };
 
-var $in_ports[second_number]$ = function(value){
+var $port[second_number]$ = function(value){
     block_$id$_arg2 = parseFloat(value);
     block_$id$_arg2 = (parseFloat(block_$id$_arg2) == 0) ?
             1 : parseFloat(block_$id$_arg2);
     result = parseFloat(block_$id$_arg1) / parseFloat(block_$id$_arg2);
-    for (var i = 0; i < $out_ports[result]$.length ; i++){
-        $out_ports[result]$[i](result);
+    for (var i = 0; i < $port[result]$.length ; i++){
+        $port[result]$[i](result);
     }
     return true;
     };

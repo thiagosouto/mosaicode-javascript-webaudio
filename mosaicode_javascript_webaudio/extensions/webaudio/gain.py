@@ -17,18 +17,22 @@ class Gain(BlockModel):
         self.help = "Sound output"
         self.label = "Gain"
         self.color = "50:150:250:150"
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                           "label":"Sound",
-                           "name":"sound"},
-                        {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                           "label":"Gain",
-                           "name":"gain"},
-                        {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
-                         "label":"Gain Value",
-                         "name":"gain_value"}]
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                         "name":"sound",
-                         "label":"Sound"}]
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                   "label":"Input",
+                "conn_type":"Input",
+                   "name":"input"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                   "label":"Gain",
+                "conn_type":"Input",
+                   "name":"gain"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Input",
+                 "label":"Gain Value",
+                 "name":"gain_value"},
+                 {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                 "name":"output",
+                "conn_type":"Output",
+                 "label":"Output"}]
         self.properties = [{"name": "gain",
                             "label": "Gain",
                             "type": MOSAICODE_FLOAT,
@@ -43,13 +47,12 @@ class Gain(BlockModel):
         self.codes["declaration"] = """
 // block_$id$ = $label$
 var block_$id$ = context.createGain();
-var $out_ports[sound]$ = null;
-var $in_ports[sound]$ = block_$id$;
-var $in_ports[gain]$ = block_$id$.gain;
-var $in_ports[gain_value]$ = function(value){
+var $port[input]$ = block_$id$;
+var $port[output]$ = block_$id$;
+var $port[gain]$ = block_$id$.gain;
+var $port[gain_value]$ = function(value){
     block_$id$.gain.value = value;
     };
 """
 
-        self.codes["execution"] = "$out_ports[sound]$ = block_$id$;\n" + \
-            "block_$id$.gain.value = $prop[gain]$;\n"
+        self.codes["execution"] = "block_$id$.gain.value = $prop[gain]$;\n"

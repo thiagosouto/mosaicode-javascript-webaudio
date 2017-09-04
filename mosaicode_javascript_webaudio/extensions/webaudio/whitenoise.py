@@ -17,8 +17,9 @@ class WhiteNoise(BlockModel):
         self.help = "White Noise"
         self.label = "White Noise"
         self.color = "50:150:250:150"
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound",
+                "conn_type":"Output",
                 "name":"sound"}
             ]
         self.group = "Sound"
@@ -44,9 +45,7 @@ WhiteNoise.prototype.process = function(e) {
 """
         self.codes["declaration"] = """
 // block_$id$ = $label$
-var block_$id$_obj =  new WhiteNoise(context);
-var block_$id$ =  block_$id$_obj.node;
-var $out_ports[sound]$ = null;
+var block_$id$ =  new WhiteNoise(context);
+$port[sound]$ = block_$id$.node;\n
 """
 
-        self.codes["execution"] = "$out_ports[sound]$ = block_$id$.node;\n"

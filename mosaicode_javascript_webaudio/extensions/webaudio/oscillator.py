@@ -17,18 +17,23 @@ class Oscillator(BlockModel):
         self.help = "Sound output"
         self.label = "Oscillator"
         self.color = "50:150:250:150"
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                           "label":"Osc Frequency",
-                           "name":"osc_freq"},
-                         {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
-                         "label":"Frequency",
-                         "name":"freq"},
-                         {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
-                         "name":"type",
-                         "label":"Type"}]
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                         "name":"sound",
-                         "label":"Sound"}]
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                "label":"Osc Frequency",
+                "conn_type":"Input",
+                "name":"osc_freq"},
+                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Input",
+                 "label":"Frequency",
+                 "name":"freq"},
+                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Input",
+                 "name":"type",
+                 "label":"Type"},
+                 {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                 "name":"sound",
+                "conn_type":"Output",
+                 "label":"Sound"}
+                 ]
         self.group = "Sound"
 
         self.properties = [{"name": "freq",
@@ -52,12 +57,12 @@ class Oscillator(BlockModel):
         self.codes["declaration"] = """
 // block_$id$ = Oscillator
 var block_$id$ =  context.createOscillator();
-var $in_ports[osc_freq]$ = block_$id$.frequency;
-var $out_ports[sound]$ = null;
-var $in_ports[freq]$ = function(value){
+var $port[osc_freq]$ = block_$id$.frequency;
+var $port[sound]$ = block_$id$;
+var $port[freq]$ = function(value){
     block_$id$.frequency.value = value;
 };
-var $in_ports[type]$ = function(value){
+var $port[type]$ = function(value){
     oscillator = ''
     if (value < 1) oscillator = 'square';
     if (value == 1) oscillator = 'sine';
@@ -67,7 +72,6 @@ var $in_ports[type]$ = function(value){
 };
 """
         self.codes["execution"] = """
-$out_ports[sound]$ = block_$id$.frequency;
 block_$id$.type = '$prop[type]$';
 block_$id$.frequency.value = $prop[freq]$; // value in hertz
 block_$id$.detune.value = 100; // value in cents
