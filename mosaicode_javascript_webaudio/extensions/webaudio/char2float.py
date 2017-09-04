@@ -17,12 +17,13 @@ class Char2Float(BlockModel):
         self.help = "Char to Float"
         self.label = "Char 2 Float"
         self.color = "200:200:25:150"
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.char",
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.char",
                 "label":"Char Input",
-                "name":"char_input"}
-                ]
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Input",
+                "name":"char_input"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float Output",
+                "conn_type":"Output",
                 "name":"float_output"}
             ]
         self.properties = [{"name": "float",
@@ -43,12 +44,12 @@ class Char2Float(BlockModel):
 
         self.codes["declaration"] = """
 // block_$id$ = Char 2 Float
-var $out_ports[float_output]$ = [];
-var $in_ports[char_input]$ = function(value){
+var $port[float_output]$ = [];
+var $port[char_input]$ = function(value){
     if (value != '$prop[char]$')
         return true;
-    for (var i = 0; i < $out_ports[float_output]$.length ; i++){
-        $out_ports[float_output]$[i]($prop[float]$);
+    for (var i = 0; i < $port[float_output]$.length ; i++){
+        $port[float_output]$[i]($prop[float]$);
     }
     return true;
     };

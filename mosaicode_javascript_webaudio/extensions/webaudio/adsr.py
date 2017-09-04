@@ -18,16 +18,18 @@ class ADSR(BlockModel):
         self.label = "ADSR"
         self.color = "50:150:250:150"
 
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                "label":"Sound",
-                "name":"sound"},
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                "label":"Input",
+                "conn_type":"Input",
+                "name":"input"},
                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Input",
                 "label":"Event Play",
-                "name":"play"}
-                ]
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                "label":"Sound",
-                "name":"sound"}
+                "name":"play"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                "label":"Output",
+                "conn_type":"Output",
+                "name":"output"}
             ]
 
         self.group = "Sound"
@@ -107,11 +109,10 @@ this.node.gain.linearRampToValueAtTime(0, time);
         self.codes["declaration"] = """
 // block_$id$ = $label$
 var block_$id$_obj = new Envelope(context, $prop[a]$, $prop[d]$, $prop[s]$, $prop[r]$, $prop[g]$);
-var block_$id$ =  block_$id$_obj.node;
-var $out_ports[sound]$ = block_$id$_obj.node;
-var $in_ports[sound]$ = block_$id$_obj.node;
+var $port[input]$ = block_$id$_obj.node;
+var $port[output]$ = block_$id$_obj.node;
 
-var $in_ports[play]$ = function(value){
+var $port[play]$ = function(value){
     block_$id$_obj.play();
 };
 """

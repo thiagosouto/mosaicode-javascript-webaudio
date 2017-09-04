@@ -17,14 +17,16 @@ class Beat(BlockModel):
         self.help = "Beat"
         self.label = "BeatValue"
         self.color = "150:150:250:150"
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float",
-                "name":"float"}
-            ]
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Output",
+                "name":"float"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Start",
+                "conn_type":"Input",
                 "name":"start"},
                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "conn_type":"Input",
                 "label":"Stop",
                 "name":"stop"}
             ]

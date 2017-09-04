@@ -17,10 +17,12 @@ class Print(BlockModel):
         self.help = "Print value"
         self.label = "Print"
         self.color = "50:150:250:150"
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "name":"float_value",
+                "conn_type":"Input",
                 "label":"Float Value"},
                 {"type":"mosaicode_javascript_webaudio.extensions.ports.char",
+                "conn_type":"Input",
                 "name":"char_value",
                 "label":"Char Value"}
                 ]
@@ -34,11 +36,11 @@ class Print(BlockModel):
                            ]
 
         self.codes["declaration"] = """
-var $in_ports[float_value]$ = function(value){
+var $port[float_value]$ = function(value){
     document.getElementById("block_$id$").innerHTML = value;
     return true;
     };
-var $in_ports[char_value]$ = $in_ports[float_value]$;
+var $port[char_value]$ = $port[float_value]$;
 """
         self.codes["html"] = """
 $prop[label]$ <span id="block_$id$"></span><br>

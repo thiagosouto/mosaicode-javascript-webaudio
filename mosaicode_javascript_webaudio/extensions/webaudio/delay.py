@@ -17,13 +17,14 @@ class Delay(BlockModel):
         self.help = "Delay"
         self.label = "Delay"
         self.color = "150:150:250:150"
-        self.in_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                "label":"Sound",
-                "name":"sound"}
-                ]
-        self.out_ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
-                "label":"Sound",
-                "name":"sound"}
+        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                "label":"Input",
+                "conn_type":"Input",
+                "name":"input"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                "label":"Output",
+                "conn_type":"Output",
+                "name":"output"}
             ]
 
         self.group = "Sound"
@@ -42,10 +43,7 @@ class Delay(BlockModel):
 // block_$id$ = Delay
 var block_$id$ = context.createDelay();
 block_$id$.delayTime.value = $prop[time]$;
-var $out_ports[sound]$ = block_$id$;
-var $in_ports[sound]$ = block_$id$;
+var $port[input]$ = block_$id$;
+var $port[output]$ = block_$id$;
 """
-
-        self.codes["execution"] = "$in_ports[sound]$ = block_$id$;\n" + \
-            "$out_ports[sound]$ = block_$id$;\n"
 
