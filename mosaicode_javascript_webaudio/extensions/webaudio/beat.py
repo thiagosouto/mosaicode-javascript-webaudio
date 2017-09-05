@@ -55,14 +55,13 @@ class Beat(BlockModel):
 var block_$id$_timeout;
 var block_$id$_value = $prop[value]$;
 var block_$id$_time = $prop[time]$;
-var $out_ports[float]$ = [];
-
-var $in_ports[start]$ = function(value){
+var $port[float]$ = [];
+var $port[start]$ = function(value){
     timeout_$id$_value();
     return true;
     };
 
-var $in_ports[stop]$ = function(value){
+var $port[stop]$ = function(value){
     clearTimeout(block_$id$_timeout);
     return true;
     };
@@ -70,8 +69,8 @@ var $in_ports[stop]$ = function(value){
 """
         self.codes["execution"] = """
 function timeout_$id$_value(){
-    for (var i = 0; i < $out_ports[float]$.length ; i++){
-        $out_ports[float]$[i](block_$id$_value);
+    for (var i = 0; i < $port[float]$.length ; i++){
+        $port[float]$[i](block_$id$_value);
     }
     block_$id$_timeout = setTimeout(timeout_$id$_value, block_$id$_time);
 };
