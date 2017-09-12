@@ -40,6 +40,7 @@ class Oscillator(BlockModel):
                             "label": "Frequency",
                             "type": MOSAICODE_FLOAT,
                             "lower": 0,
+                             "upper": 20000,
                             "step": 1,
                             "value": 440
                             },

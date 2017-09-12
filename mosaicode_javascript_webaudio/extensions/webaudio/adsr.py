@@ -105,6 +105,7 @@ time += this.s;
 time += this.r;
 this.node.gain.linearRampToValueAtTime(0, time);
 }
+
 """
         self.codes["declaration"] = """
 // block_$id$ = $label$
