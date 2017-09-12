@@ -20,8 +20,12 @@ class FloatValue(BlockModel):
         self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
                 "label":"Float",
                 "conn_type":"Output",
-                "name":"float"}
-            ]
+                "name":"float"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                "label":"Float",
+                "conn_type":"Input",
+                "name":"input"}
+                ]
         self.group = "Interface"
 
         self.properties = [{"name": "value",
@@ -59,9 +63,16 @@ class FloatValue(BlockModel):
 // block_$id$ = Float Value
 var block_$id$_value = $prop[value]$;
 var $port[float]$ = [];
+
+var $port[input]$ = function(value){
+    document.getElementById("block_$id$").value = value;
+    change$id$_value(value);
+    return true;
+    };
+
 """
         self.codes["execution"] = """
-function change_$id$_value(){
+function change$id$_value(){
     value = document.getElementById("block_$id$").value;
     for (var i = 0; i < $port[float]$.length ; i++){
         $port[float]$[i](value);
@@ -70,6 +81,6 @@ function change_$id$_value(){
 """
         self.codes["html"] = """
 $prop[label]$ <input type="number" id="block_$id$" value="$prop[value]$" min="$prop[min]$"
-        max="$prop[max]$" onChange="change_$id$_value();"><br>
+        max="$prop[max]$" onChange="change$id$_value();"><br>
 """
 

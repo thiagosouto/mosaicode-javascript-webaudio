@@ -45,7 +45,7 @@ var $port[click]$ = [];
 """
 
         self.codes["execution"] = """
-function click_$id$(){
+function click$id$(){
     value = document.getElementById("block_$id$").value;
     for (var i = 0; i < $port[click]$.length ; i++){
         $port[click]$[i](value);
@@ -54,7 +54,7 @@ function click_$id$(){
 """
 
         self.codes["html"] = """
-<button type="button" value="$prop[value]$" onClick="click_$id$();"
+<button type="button" value="$prop[value]$" onClick="click$id$();"
 id="block_$id$">$prop[label]$</button><br>
 """
 

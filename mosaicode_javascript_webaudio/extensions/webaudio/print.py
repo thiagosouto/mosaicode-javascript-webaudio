@@ -24,7 +24,11 @@ class Print(BlockModel):
                 {"type":"mosaicode_javascript_webaudio.extensions.ports.char",
                 "conn_type":"Input",
                 "name":"char_value",
-                "label":"Char Value"}
+                "label":"Char Value"},
+                {"type":"mosaicode_javascript_webaudio.extensions.ports.color",
+                "conn_type":"Input",
+                "name":"color_value",
+                "label":"Color Value"}
                 ]
         self.group = "Interface"
 
@@ -36,11 +40,13 @@ class Print(BlockModel):
                            ]
 
         self.codes["declaration"] = """
+// $label$
 var $port[float_value]$ = function(value){
     document.getElementById("block_$id$").innerHTML = value;
     return true;
     };
 var $port[char_value]$ = $port[float_value]$;
+var $port[color_value]$ = $port[float_value]$;
 """
         self.codes["html"] = """
 $prop[label]$ <span id="block_$id$"></span><br>
