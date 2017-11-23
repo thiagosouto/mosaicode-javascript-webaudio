@@ -17,7 +17,7 @@ class Brackground(BlockModel):
         self.help = "Change Background color"
         self.label = "Background"
         self.color = "50:150:0:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.color",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.color",
                 "name":"rgb",
                 "conn_type":"Input",
                 "label":"RGB COlor"}

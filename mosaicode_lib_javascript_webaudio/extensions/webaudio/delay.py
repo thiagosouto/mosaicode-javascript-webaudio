@@ -17,11 +17,11 @@ class Delay(BlockModel):
         self.help = "Delay"
         self.label = "Delay"
         self.color = "150:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                 "label":"Input",
                 "conn_type":"Input",
                 "name":"input"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                 "label":"Output",
                 "conn_type":"Output",
                 "name":"output"}

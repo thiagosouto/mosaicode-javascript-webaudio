@@ -17,15 +17,15 @@ class Inc(BlockModel):
         self.help = "Increment"
         self.label = "Increment"
         self.color = "150:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Float",
                 "conn_type":"Output",
                 "name":"float"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Count",
                 "conn_type":"Input",
                 "name":"count"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "conn_type":"Input",
                 "label":"Value",
                 "name":"value"}

@@ -17,19 +17,19 @@ class Oscillator(BlockModel):
         self.help = "Sound output"
         self.label = "Oscillator"
         self.color = "50:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                 "label":"Osc Frequency",
                 "conn_type":"Input",
                 "name":"osc_freq"},
-                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                 {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "conn_type":"Input",
                  "label":"Frequency",
                  "name":"freq"},
-                 {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                 {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "conn_type":"Input",
                  "name":"type",
                  "label":"Type"},
-                 {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                 {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                  "name":"sound",
                 "conn_type":"Output",
                  "label":"Sound"}

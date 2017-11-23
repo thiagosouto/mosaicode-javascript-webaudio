@@ -17,19 +17,19 @@ class RGB(BlockModel):
         self.help = "Creates RGB Color"
         self.label = "RGB"
         self.color = "50:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"r",
                 "conn_type":"Input",
                 "label":"Red"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"g",
                 "conn_type":"Input",
                 "label":"Green"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"b",
                 "conn_type":"Input",
                 "label":"Blue"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.color",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.color",
                 "name":"result",
                 "conn_type":"Output",
                 "label":"Color"}

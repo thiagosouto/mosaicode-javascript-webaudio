@@ -17,11 +17,11 @@ class Midi2Freq(BlockModel):
         self.help = "midi to freq"
         self.label = "Midi 2 Freq"
         self.color = "200:200:25:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"midi_value",
                 "conn_type":"Input",
                 "label":"Midi Value"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Frequency",
                 "conn_type":"Output",
                 "name":"frequency"}

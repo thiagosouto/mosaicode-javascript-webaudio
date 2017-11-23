@@ -17,19 +17,19 @@ class Gain(BlockModel):
         self.help = "Sound output"
         self.label = "Gain"
         self.color = "50:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                    "label":"Input",
                 "conn_type":"Input",
                    "name":"input"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                    "label":"Gain",
                 "conn_type":"Input",
                    "name":"gain"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "conn_type":"Input",
                  "label":"Gain Value",
                  "name":"gain_value"},
-                 {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                 {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                  "name":"output",
                 "conn_type":"Output",
                  "label":"Output"}]

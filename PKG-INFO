@@ -1,10 +1,10 @@
 Metadata-Version: 1.0
-Name: mosaicode
+Name: Mosaicode Javascript/WebAudio
 Version: 1.0
-Summary: Image Processing and Computer Vision Automatic Programming Tool
-Home-page: http://s2i.das.ufsc.br/mosaicode/en/home.html
-Author: Clovis Peruchi Scotti
-Author-email: scotti@ieee.org
+Summary: Computer Music Programming Tool
+Home-page: https://mosaicode.github.io/
+Author: Mosaicode Group
+Author-email: mosaicode-dev@googlegroups.com
 License: GNU GPL
 Description: UNKNOWN
 Platform: UNKNOWN
@@ -14,7 +14,7 @@ Classifier: Intended Audience :: Science/Research
 Classifier: License :: OSI Approved :: GNU General Public License (GPL)
 Classifier: Natural Language :: English
 Classifier: Operating System :: OS Independent
-Classifier: Programming Language :: C
+Classifier: Programming Language :: Javascript
 Classifier: Programming Language :: Python
 Classifier: Topic :: Scientific/Engineering
 Classifier: Topic :: Software Development :: Code Generators
