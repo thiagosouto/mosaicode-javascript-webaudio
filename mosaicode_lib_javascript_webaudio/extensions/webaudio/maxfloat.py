@@ -5,7 +5,7 @@ This module contains the AddFloat class.
 """
 from mosaicode.model.blockmodel import BlockModel
 
-class AddFloat(BlockModel):
+class MaxFloat(BlockModel):
 
     # -------------------------------------------------------------------------
     def __init__(self):
@@ -13,18 +13,18 @@ class AddFloat(BlockModel):
 
         self.language = "javascript"
         self.framework = "webaudio"
-        self.help = "Add Float"
-        self.label = "Add Float"
+        self.help = "Max Float"
+        self.label = "Max Float"
         self.color = "200:200:25:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"first_number",
                 "conn_type":"Input",
                 "label":"First Number"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"second_number",
                 "conn_type":"Input",
                 "label":"Second Number"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Result",
                 "conn_type":"Output",
                 "name":"result"}
@@ -39,7 +39,7 @@ var $port[result]$ = [];
 
 var $port[first_number]$ = function(value){
     block_$id$_arg1 = parseFloat(value);
-    result = parseFloat(block_$id$_arg1) + parseFloat(block_$id$_arg2);
+    result = (block_$id$_arg1 > block_$id$_arg2)?block_$id$_arg1:block_$id$_arg2;
     for (var i = 0; i < $port[result]$.length ; i++){
         $port[result]$[i](result);
     }
@@ -48,7 +48,7 @@ var $port[first_number]$ = function(value){
 
 var $port[second_number]$ = function(value){
     block_$id$_arg2 = parseFloat(value);
-    result = parseFloat(block_$id$_arg1) + parseFloat(block_$id$_arg2);
+    result = (block_$id$_arg1 > block_$id$_arg2)?block_$id$_arg1:block_$id$_arg2;
     for (var i = 0; i < $port[result]$.length ; i++){
         $port[result]$[i](result);
     }

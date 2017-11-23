@@ -17,7 +17,7 @@ class Button(BlockModel):
         self.help = "Button"
         self.label = "Button"
         self.color = "50:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Click",
                 "conn_type":"Output",
                 "name":"click"}

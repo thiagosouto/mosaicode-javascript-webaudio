@@ -17,7 +17,7 @@ class WhiteNoise(BlockModel):
         self.help = "White Noise"
         self.label = "White Noise"
         self.color = "50:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound",
                 "conn_type":"Output",
                 "name":"sound"}

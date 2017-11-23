@@ -18,15 +18,15 @@ class ADSR(BlockModel):
         self.label = "ADSR"
         self.color = "50:150:250:150"
 
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                 "label":"Input",
                 "conn_type":"Input",
                 "name":"input"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "conn_type":"Input",
                 "label":"Event Play",
                 "name":"play"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                 "label":"Output",
                 "conn_type":"Output",
                 "name":"output"}

@@ -17,15 +17,15 @@ class SubtractFloat(BlockModel):
         self.help = "Subtract Float"
         self.label = "Subtract Float"
         self.color = "200:200:25:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"first_number",
                 "conn_type":"Input",
                 "label":"First Number"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"second_number",
                 "conn_type":"Input",
                 "label":"Second Number"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Result",
                 "conn_type":"Output",
                 "name":"result"}

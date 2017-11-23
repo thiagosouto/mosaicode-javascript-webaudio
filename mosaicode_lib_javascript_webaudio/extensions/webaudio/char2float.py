@@ -17,11 +17,11 @@ class Char2Float(BlockModel):
         self.help = "Char to Float"
         self.label = "Char 2 Float"
         self.color = "200:200:25:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.char",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.char",
                 "label":"Char Input",
                 "conn_type":"Input",
                 "name":"char_input"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Float Output",
                 "conn_type":"Output",
                 "name":"float_output"}

@@ -17,7 +17,7 @@ class Speaker(BlockModel):
         self.help = "Sound output"
         self.label = "Speaker"
         self.color = "150:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.sound",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                 "label":"Sound",
                 "conn_type":"Input",
                 "name":"sound"}

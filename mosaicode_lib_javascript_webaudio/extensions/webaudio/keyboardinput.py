@@ -17,11 +17,11 @@ class KeyboardInput(BlockModel):
         self.help = "Keyboard Input"
         self.label = "Keyboard Input"
         self.color = "50:150:250:150"
-        self.ports = [{"type":"mosaicode_javascript_webaudio.extensions.ports.float",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Float Output",
                 "conn_type":"Output",
                 "name":"float_output"},
-                {"type":"mosaicode_javascript_webaudio.extensions.ports.char",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.char",
                 "label":"Char Output",
                 "conn_type":"Output",
                 "name":"char_output"}
