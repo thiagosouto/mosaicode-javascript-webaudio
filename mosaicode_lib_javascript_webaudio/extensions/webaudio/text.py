@@ -6,7 +6,7 @@ This module contains the Button class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
-class Button(BlockModel):
+class Text(BlockModel):
 
     # -------------------------------------------------------------------------
     def __init__(self):
@@ -14,21 +14,22 @@ class Button(BlockModel):
 
         self.language = "javascript"
         self.framework = "webaudio"
-        self.help = "Button"
-        self.label = "Button"
+        self.help = "Text"
+        self.label = "Text"
         self.color = "50:150:250:150"
-        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
-                "label":"Click",
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.string",
+                "label":"Value",
                 "conn_type":"Output",
-                "name":"click"}
+                "name":"value"},
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.string",
+                "label":"Value",
+                "conn_type":"Input",
+                "name":"invalue"}
             ]
         self.properties = [{"name": "value",
                             "label": "Value",
-                            "type": MOSAICODE_FLOAT,
-                            "lower": 0,
-                            "upper": 20000,
-                            "step": 1,
-                            "value": 1
+                            "type": MOSAICODE_STRING,
+                            "value": ''
                             },
                            {"name": "label",
                             "label": "Label",
@@ -40,21 +41,29 @@ class Button(BlockModel):
 
         self.codes["declaration"] = """
 // block_$id$ = $label$
-var block_$id$_value = $prop[value]$;
-var $port[click]$ = [];
+var $port[value]$ = [];
+
+var $port[invalue]$ = function(value){
+    document.getElementById("block_$id$").value = value;
+    return true;
+    };
+
 """
 
         self.codes["execution"] = """
-function click$id$(){
+function enter_value$id$(e){
+    e = e || window.event;
+    if (e.keyCode != 13) //Ignore if it is not enter
+        return;
     value = document.getElementById("block_$id$").value;
-    for (var i = 0; i < $port[click]$.length ; i++){
-        $port[click]$[i](value);
+    for (var i = 0; i < $port[value]$.length ; i++){
+        $port[value]$[i](value);
     }
 };
 """
 
         self.codes["html"] = """
-<button type="button" value="$prop[value]$" onClick="click$id$();"
-id="block_$id$">$prop[label]$</button><br>
+$prop[label]$ <input type="text" value="$prop[value]$" onkeypress="enter_value$id$(event);"
+id="block_$id$"><br>
 """
 
