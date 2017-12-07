@@ -16,7 +16,7 @@ class RGB(BlockModel):
         self.framework = "webaudio"
         self.help = "Creates RGB Color"
         self.label = "RGB"
-        self.color = "50:150:250:150"
+        self.color = "50:150:0:150"
         self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"r",
                 "conn_type":"Input",
@@ -34,7 +34,7 @@ class RGB(BlockModel):
                 "conn_type":"Output",
                 "label":"Color"}
                 ]
-        self.group = "Interface"
+        self.group = "Conversion"
 
         self.properties = []
 
