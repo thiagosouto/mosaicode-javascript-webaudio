@@ -6,7 +6,7 @@ This module contains the Button class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
-class Color(BlockModel):
+class Text(BlockModel):
 
     # -------------------------------------------------------------------------
     def __init__(self):
@@ -14,22 +14,24 @@ class Color(BlockModel):
 
         self.language = "javascript"
         self.framework = "webaudio"
-        self.help = "Color"
-        self.label = "Color"
-        self.color = "50:150:0:150"
-        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.color",
+        self.help = "Text"
+        self.label = "Text"
+        self.color = "50:150:250:150"
+        self.group = "Form"
+
+        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.string",
                 "label":"Value",
                 "conn_type":"Output",
                 "name":"value"},
-                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.color",
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.string",
                 "label":"Value",
                 "conn_type":"Input",
                 "name":"invalue"}
             ]
         self.properties = [{"name": "value",
                             "label": "Value",
-                            "type": MOSAICODE_COLOR,
-                            "value": '#FFFFFF'
+                            "type": MOSAICODE_STRING,
+                            "value": ''
                             },
                            {"name": "label",
                             "label": "Label",
@@ -37,7 +39,6 @@ class Color(BlockModel):
                             "value": "Label"
                             }
                            ]
-        self.group = "GUI"
 
         self.codes["declaration"] = """
 // block_$id$ = $label$
@@ -52,6 +53,9 @@ var $port[invalue]$ = function(value){
 
         self.codes["execution"] = """
 function enter_value$id$(e){
+    e = e || window.event;
+    if (e.keyCode != 13) //Ignore if it is not enter
+        return;
     value = document.getElementById("block_$id$").value;
     for (var i = 0; i < $port[value]$.length ; i++){
         $port[value]$[i](value);
@@ -60,6 +64,7 @@ function enter_value$id$(e){
 """
 
         self.codes["html"] = """
-$prop[label]$ <input type="color" value="$prop[value]$" oninput="enter_value$id$(event);" id="block_$id$"><br>
+$prop[label]$ <input type="text" value="$prop[value]$" onkeypress="enter_value$id$(event);"
+id="block_$id$"><br>
 """
 

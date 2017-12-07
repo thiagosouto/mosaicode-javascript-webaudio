@@ -17,6 +17,8 @@ class Select(BlockModel):
         self.help = "Select"
         self.label = "Select"
         self.color = "50:150:250:150"
+        self.group = "Form"
+
         self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.string",
                 "label":"String Value",
                 "conn_type":"Output",
@@ -37,7 +39,6 @@ class Select(BlockModel):
                             "value": "values"
                             }
                            ]
-        self.group = "GUI"
 
         self.codes["declaration"] = """
 // block_$id$ = $label$

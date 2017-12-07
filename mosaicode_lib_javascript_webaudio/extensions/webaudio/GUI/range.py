@@ -17,6 +17,8 @@ class Range(BlockModel):
         self.help = "Range"
         self.label = "Range"
         self.color = "50:150:250:150"
+        self.group = "Form"
+
         self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Value",
                 "conn_type":"Output",
@@ -53,7 +55,6 @@ class Range(BlockModel):
                             "value": 100
                             }
                            ]
-        self.group = "GUI"
 
         self.codes["declaration"] = """
 // block_$id$ = $label$

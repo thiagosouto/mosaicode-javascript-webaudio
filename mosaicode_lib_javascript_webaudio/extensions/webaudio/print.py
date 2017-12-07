@@ -17,6 +17,7 @@ class Print(BlockModel):
         self.help = "Print value"
         self.label = "Print"
         self.color = "50:150:250:150"
+        self.group = "Interface"
         self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"float_value",
                 "conn_type":"Input",
@@ -34,7 +35,6 @@ class Print(BlockModel):
                 "name":"string_value",
                 "label":"String Value"}
                 ]
-        self.group = "GUI"
 
         self.properties = [{"name": "label",
                             "label": "Label",
