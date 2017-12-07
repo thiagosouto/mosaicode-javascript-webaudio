@@ -6,7 +6,7 @@ This module contains the Button class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
-class Number(BlockModel):
+class Check(BlockModel):
 
     # -------------------------------------------------------------------------
     def __init__(self):
@@ -14,9 +14,11 @@ class Number(BlockModel):
 
         self.language = "javascript"
         self.framework = "webaudio"
-        self.help = "Number"
-        self.label = "Number"
+        self.help = "Check"
+        self.label = "Check"
         self.color = "50:150:250:150"
+        self.group = "Form"
+
         self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "label":"Value",
                 "conn_type":"Output",
@@ -35,32 +37,18 @@ class Number(BlockModel):
                             "label": "Label",
                             "type": MOSAICODE_STRING,
                             "value": "Label"
-                            },
-                            {"name": "min",
-                            "label": "Min",
-                            "type": MOSAICODE_FLOAT,
-                            "lower": 0,
-                             "upper": 20000,
-                            "step": 1,
-                            "value": 0
-                            },
-                            {"name": "max",
-                            "label": "Max",
-                            "type": MOSAICODE_FLOAT,
-                            "lower": 0,
-                             "upper": 20000,
-                            "step": 1,
-                            "value": 100
                             }
                            ]
-        self.group = "GUI"
 
         self.codes["declaration"] = """
 // block_$id$ = $label$
 var $port[value]$ = [];
 
 var $port[invalue]$ = function(value){
-    document.getElementById("block_$id$").value = value;
+    if (value)
+    document.getElementById("block_$id$").checked = true;
+    else
+    document.getElementById("block_$id$").checked = false;
     return true;
     };
 
@@ -68,14 +56,17 @@ var $port[invalue]$ = function(value){
 
         self.codes["execution"] = """
 function change_value$id$(e){
-    value = document.getElementById("block_$id$").value;
+    value = document.getElementById("block_$id$").checked;
     for (var i = 0; i < $port[value]$.length ; i++){
-        $port[value]$[i](value);
+        if (value)
+            $port[value]$[i](1);
+        else
+            $port[value]$[i](0);
     }
 };
 """
 
         self.codes["html"] = """
-$prop[label]$ <input type="number" min="$prop[min]$" max="$prop[max]$" onchange="change_value$id$(event);" id="block_$id$"><br>
+<input type="checkbox" onchange="change_value$id$(event);" id="block_$id$"> $prop[label]$ <br>
 """
 

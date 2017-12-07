@@ -17,6 +17,8 @@ class Mouse(BlockModel):
         self.help = "Mouse Position"
         self.label = "Mouse Position"
         self.color = "50:50:50:150"
+        self.group = "Interface"
+
         self.out_types = ["mosaicode_lib_javascript_webaudio.extensions.ports.float", "mosaicode_lib_javascript_webaudio.extensions.ports.float"]
         self.ports = [
                 {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
@@ -28,13 +30,7 @@ class Mouse(BlockModel):
                 "name":"y",
                 "label":"Y"}
                 ]
-        self.group = "Interface"
 
-        self.codes["declaration"] = """
-// block_$id$ = Mouse
-var $port[x]$ = [];
-var $port[y]$ = [];
-"""
         self.codes["function"] = """
 // ----------------- Mouse position ----------------------------
 // Detect if the browser is IE or not.
@@ -51,6 +47,10 @@ document.onmousemove = getMouseXY;
 var tempX = 0
 var tempY = 0
 
+// Variable to keep output ports
+var x_ports = [];
+var y_ports = [];
+
 // Main function to retrieve mouse x-y pos.s
 
 function getMouseXY(e) {
@@ -66,13 +66,23 @@ function getMouseXY(e) {
   if (tempY < 0){tempY = 0}
 
     // X value
-    for (var i = 0; i < $port[x]$.length ; i++)
-        $port[x]$[i](tempX);
+    for (var i = 0; i < x_ports.length ; i++)
+        for (var j = 0; j < x_ports[i].length ; j++)
+                x_ports[i][j](tempX);
 
     // Y value
-    for (var i = 0; i < $port[y]$.length ; i++)
-        $port[y]$[i](tempY);
+    for (var i = 0; i < y_ports.length ; i++)
+        for (var j = 0; j < y_ports[i].length ; j++)
+                y_ports[i][j](tempY);
   return true
 }
 // ----------------- Mouse position ----------------------------\n
+"""
+
+        self.codes["declaration"] = """
+// block_$id$ = Mouse
+var $port[x]$ = [];
+var $port[y]$ = [];
+x_ports.push($port[x]$);
+y_ports.push($port[y]$);
 """

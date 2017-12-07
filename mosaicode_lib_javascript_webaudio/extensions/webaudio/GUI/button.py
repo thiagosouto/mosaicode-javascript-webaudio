@@ -6,7 +6,7 @@ This module contains the Button class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
-class Check(BlockModel):
+class Button(BlockModel):
 
     # -------------------------------------------------------------------------
     def __init__(self):
@@ -14,22 +14,22 @@ class Check(BlockModel):
 
         self.language = "javascript"
         self.framework = "webaudio"
-        self.help = "Check"
-        self.label = "Check"
+        self.help = "Button"
+        self.label = "Button"
         self.color = "50:150:250:150"
         self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
-                "label":"Value",
+                "label":"Click",
                 "conn_type":"Output",
-                "name":"value"},
-                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
-                "label":"Value",
-                "conn_type":"Input",
-                "name":"invalue"}
+                "name":"click"}
             ]
+        self.group = "Form"
         self.properties = [{"name": "value",
                             "label": "Value",
                             "type": MOSAICODE_FLOAT,
-                            "value": '0'
+                            "lower": 0,
+                            "upper": 20000,
+                            "step": 1,
+                            "value": 1
                             },
                            {"name": "label",
                             "label": "Label",
@@ -37,35 +37,24 @@ class Check(BlockModel):
                             "value": "Label"
                             }
                            ]
-        self.group = "GUI"
 
         self.codes["declaration"] = """
 // block_$id$ = $label$
-var $port[value]$ = [];
-
-var $port[invalue]$ = function(value){
-    if (value)
-    document.getElementById("block_$id$").checked = true;
-    else
-    document.getElementById("block_$id$").checked = false;
-    return true;
-    };
-
+var block_$id$_value = $prop[value]$;
+var $port[click]$ = [];
 """
 
         self.codes["execution"] = """
-function change_value$id$(e){
-    value = document.getElementById("block_$id$").checked;
-    for (var i = 0; i < $port[value]$.length ; i++){
-        if (value)
-            $port[value]$[i](1);
-        else
-            $port[value]$[i](0);
+function click$id$(){
+    value = document.getElementById("block_$id$").value;
+    for (var i = 0; i < $port[click]$.length ; i++){
+        $port[click]$[i](value);
     }
 };
 """
 
         self.codes["html"] = """
-<input type="checkbox" onchange="change_value$id$(event);" id="block_$id$"> $prop[label]$ <br>
+<button type="button" value="$prop[value]$" onClick="click$id$();"
+id="block_$id$">$prop[label]$</button><br>
 """
 
