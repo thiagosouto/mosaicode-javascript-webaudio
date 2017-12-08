@@ -42,7 +42,7 @@ class Random(BlockModel):
                             "lower": -20000,
                             "upper": 20000,
                             "step": 1,
-                            "value": 1
+                            "value": 100
                             }
                            ]
 

@@ -6,7 +6,7 @@ This module contains the Mouse class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
-class Mouse(BlockModel):
+class MousePosition(BlockModel):
 
     # --------------------------------------------------------------------------
     def __init__(self):
@@ -17,7 +17,7 @@ class Mouse(BlockModel):
         self.help = "Mouse Position"
         self.label = "Mouse Position"
         self.color = "50:50:50:150"
-        self.group = "Interface"
+        self.group = "Input Device"
 
         self.out_types = ["mosaicode_lib_javascript_webaudio.extensions.ports.float", "mosaicode_lib_javascript_webaudio.extensions.ports.float"]
         self.ports = [
