@@ -17,6 +17,7 @@ class Print(BlockModel):
         self.help = "Print value"
         self.label = "Print"
         self.color = "50:150:250:150"
+        self.group = "Interface"
         self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
                 "name":"float_value",
                 "conn_type":"Input",
@@ -28,9 +29,12 @@ class Print(BlockModel):
                 {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.color",
                 "conn_type":"Input",
                 "name":"color_value",
-                "label":"Color Value"}
+                "label":"Color Value"},
+                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.string",
+                "conn_type":"Input",
+                "name":"string_value",
+                "label":"String Value"}
                 ]
-        self.group = "Interface"
 
         self.properties = [{"name": "label",
                             "label": "Label",
@@ -47,6 +51,7 @@ var $port[float_value]$ = function(value){
     };
 var $port[char_value]$ = $port[float_value]$;
 var $port[color_value]$ = $port[float_value]$;
+var $port[string_value]$ = $port[float_value]$;
 """
         self.codes["html"] = """
 $prop[label]$ <span id="block_$id$"></span><br>

@@ -22,6 +22,7 @@ class Button(BlockModel):
                 "conn_type":"Output",
                 "name":"click"}
             ]
+        self.group = "Form"
         self.properties = [{"name": "value",
                             "label": "Value",
                             "type": MOSAICODE_FLOAT,
@@ -36,7 +37,6 @@ class Button(BlockModel):
                             "value": "Label"
                             }
                            ]
-        self.group = "Interface"
 
         self.codes["declaration"] = """
 // block_$id$ = $label$
