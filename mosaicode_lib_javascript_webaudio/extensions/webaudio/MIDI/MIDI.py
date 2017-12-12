@@ -75,8 +75,8 @@ function MidiMessage (message) {
 
     //Ctrl
     if (message.data[0] === 176 ){
-        for (var i = 0; i < note_output.length ; i++)
-            for (var j = 0; j < note_output[i].length ; j++)
+        for (var i = 0; i < control_output.length ; i++)
+            for (var j = 0; j < control_output[i].length ; j++)
                     control_output[i][j]([message.data[1],message.data[2]]);
     }
     // Not used
