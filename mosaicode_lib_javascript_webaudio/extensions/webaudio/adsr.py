@@ -41,7 +41,7 @@ class ADSR(BlockModel):
              "lower": 0,
              "upper": 10000,
              "step": 1,
-             "value": 5
+             "value": 200
              },
             {"name": "d",
              "label": "Delay",
@@ -49,7 +49,7 @@ class ADSR(BlockModel):
              "lower": 0,
              "upper": 10000,
              "step": 1,
-             "value": 2
+             "value": 20
              },
             {"name": "s",
              "label": "Sustain",
@@ -73,10 +73,10 @@ class ADSR(BlockModel):
              "lower": 0,
              "upper": 10000,
              "step": 1,
-             "value": 0.5
+             "value": 0.8
              }
         ]
-        
+
         self.codes["function"] = """
 Envelope = function(context, a, d, s, r, g) {
 this.node = context.createGain()
@@ -117,4 +117,3 @@ var $port[play]$ = function(value){
     block_$id$_obj.play();
 };
 """
-
