@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This module contains the MulSoundFloat class.
+This module contains the DivSound class.
 """
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
 
-class MulSoundFloat(BlockModel):
+class DivSound(BlockModel):
 
     # --------------------------------------------------------------------------
     def __init__(self):
@@ -15,19 +15,19 @@ class MulSoundFloat(BlockModel):
 
         self.language = "javascript"
         self.framework = "webaudio"
-        self.help = " Mul Sound Float"
-        self.label = "Mul Sound Float"
+        self.help = "Div Sound"
+        self.label = "Div Sound"
         self.color = "50:150:250:150"
         self.group = "Sound"
 
         self.ports = [{"type": "mosaicode_lib_javascript_webaudio.extensions.ports.sound",
-                       "name": "sound_input",
+                       "name": "sound_input0",
                        "conn_type": "Input",
                        "label": "Sound"},
-                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.float",
-                       "name": "float_input",
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.sound",
+                       "name": "sound_input1",
                        "conn_type": "Input",
-                       "label": "Float Value"},
+                       "label": "Input"},
                       {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.sound",
                        "label": "Sound",
                        "conn_type": "Output",
@@ -35,32 +35,35 @@ class MulSoundFloat(BlockModel):
                       ]
 
         self.codes["function"] = """
-MulSoundFloat = function(context, float_value) {
+DivSound = function(context, analyzer0, analyzer1) {
     var that = this;
-    this.float = float_value;
+    this.analyzer0 = analyzer0;
+    this.analyzer1 = analyzer1;
     this.context = context;
     this.node = context.createScriptProcessor(1024, 1, 1);
-    this.node.onaudioprocess = function(e) { that.process(e) };
+    this.node.onaudioprocess = function(e) {that.process(e)};
 }
 
-MulSoundFloat.prototype.process = function(e) {
-    var in0 = e.inputBuffer.getChannelData(0);
+DivSound.prototype.process = function(e) {
+    var in0 = new Float32Array(this.analyzer0.fftSize);
+    var in1 = new Float32Array(this.analyzer1.fftSize);
+
+    this.analyzer0.getFloatTimeDomainData(in0);
+    this.analyzer1.getFloatTimeDomainData(in1);
+
     var out = e.outputBuffer.getChannelData(0);
     for (var i = 0; i < in0.length; ++i) {
-        out[i] = in0[i] * this.float;
+        out[i] = in0[i] / in1[i];
     }
 }
 """
         self.codes["declaration"] = """
 // block_$id$ = $label$
+var block_$id$_in0 = context.createAnalyser();
+var block_$id$_in1 = context.createAnalyser();
 
-var block_$id$_float = 0;
-var $port[float_input]$ = function(value){
-    block_$id$_float = parseFloat(value);
-    return true;
-    };
-
-var block_$id$_obj = new MulSoundFloat(context, block_$id$_float);
-var $port[sound_input]$ = block_$id$_obj.node;
+var $port[sound_input0]$ = block_$id$_in0;
+var $port[sound_input1]$ = block_$id$_in1;
+var block_$id$_obj = new DivSound(context, block_$id$_in0, block_$id$_in1);
 var $port[output]$ = block_$id$_obj.node;
 """

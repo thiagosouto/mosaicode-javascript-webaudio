@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This module contains the Midi2Freq class.
+This module contains the DivSoundFloat class.
 """
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
@@ -17,7 +17,7 @@ class DivSoundFloat(BlockModel):
         self.framework = "webaudio"
         self.help = " Div Sound Float"
         self.label = "Div Sound Float"
-        self.color = "250:250:0:150"
+        self.color = "50:150:250:150"
         self.group = "Sound"
 
         self.ports = [{"type": "mosaicode_lib_javascript_webaudio.extensions.ports.sound",
