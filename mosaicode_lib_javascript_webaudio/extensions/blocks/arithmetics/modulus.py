@@ -55,6 +55,8 @@ function modulus$id$() {
     for (var i = 0; i < $port[rest]$.length ; i++){
         $port[rest]$[i](rest);
     }
+    
+    return true;
 }
 
 var $port[dividend]$ = function(value){

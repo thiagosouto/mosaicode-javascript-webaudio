@@ -39,7 +39,11 @@ class Print(BlockModel):
                       {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.point",
                        "conn_type": "Input",
                        "name": "point_value",
-                       "label": "Point Value"}
+                       "label": "Point Value"},
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.bool",
+                       "conn_type": "Input",
+                       "name": "bool_value",
+                       "label": "Bool Value"}
                       ]
 
         self.properties = [{"name": "label",
@@ -75,6 +79,11 @@ var $port[point_value]$ = function(value){
     document.getElementById("block_$id$").innerHTML = "("+value+")";
     return true;
     };
+    
+var $port[bool_value]$ = function(value){
+    document.getElementById("block_$id$").innerHTML = "("+value+")";
+    return true;
+    };    
 """
         self.codes["html"] = """
 $prop[label]$ <span id="block_$id$"></span><br>
