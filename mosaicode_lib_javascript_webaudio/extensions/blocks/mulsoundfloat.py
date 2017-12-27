@@ -54,13 +54,15 @@ MulSoundFloat.prototype.process = function(e) {
         self.codes["declaration"] = """
 // block_$id$ = $label$
 
-var block_$id$_float = 0;
+var block_$id$_float = 1;
+var block_$id$_obj = new MulSoundFloat(context, block_$id$_float);
+
 var $port[float_input]$ = function(value){
     block_$id$_float = parseFloat(value);
+    block_$id$_obj.float = block_$id$_float;
     return true;
     };
 
-var block_$id$_obj = new MulSoundFloat(context, block_$id$_float);
 var $port[sound_input]$ = block_$id$_obj.node;
 var $port[output]$ = block_$id$_obj.node;
 """
