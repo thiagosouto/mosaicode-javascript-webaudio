@@ -6,6 +6,7 @@ This module contains the ADSR class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
+
 class ADSR(BlockModel):
 
     # -------------------------------------------------------------------------
@@ -18,19 +19,39 @@ class ADSR(BlockModel):
         self.label = "ADSR"
         self.color = "50:150:250:150"
 
-        self.ports = [{"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
-                "label":"Input",
-                "conn_type":"Input",
-                "name":"input"},
-                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.float",
-                "conn_type":"Input",
-                "label":"Event Play",
-                "name":"play"},
-                {"type":"mosaicode_lib_javascript_webaudio.extensions.ports.sound",
-                "label":"Output",
-                "conn_type":"Output",
-                "name":"output"}
-            ]
+        self.ports = [{"type": "mosaicode_lib_javascript_webaudio.extensions.ports.sound",
+                       "label": "Input",
+                       "conn_type": "Input",
+                       "name": "input"},
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.float",
+                       "label": "Attack",
+                       "conn_type": "Input",
+                       "name": "a"},
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.float",
+                       "label": "Decay",
+                       "conn_type": "Input",
+                       "name": "d"},
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.float",
+                       "label": "Sustain",
+                       "conn_type": "Input",
+                       "name": "s"},
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.float",
+                       "label": "Release",
+                       "conn_type": "Input",
+                       "name": "r"},
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.float",
+                       "label": "Gain",
+                       "conn_type": "Input",
+                       "name": "g"},
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.float",
+                       "conn_type": "Input",
+                       "label": "Event Play",
+                       "name": "play"},
+                      {"type": "mosaicode_lib_javascript_webaudio.extensions.ports.sound",
+                       "label": "Output",
+                       "conn_type": "Output",
+                       "name": "output"}
+                      ]
 
         self.group = "Sound"
 
@@ -44,7 +65,7 @@ class ADSR(BlockModel):
              "value": 200
              },
             {"name": "d",
-             "label": "Delay",
+             "label": "Decay",
              "type": MOSAICODE_FLOAT,
              "lower": 0,
              "upper": 10000,
@@ -106,14 +127,56 @@ time += this.r;
 this.node.gain.linearRampToValueAtTime(0, time);
 }
 
+Envelope.prototype.seta = function(a) {
+    this.a = parseFloat(a)/1000.0;
+}
+
+Envelope.prototype.setd = function(d) {
+    this.d = parseFloat(d)/1000.0;
+}
+
+Envelope.prototype.sets = function(s) {
+    this.s = parseFloat(s)/1000.0;
+}
+
+Envelope.prototype.setr = function(r) {
+    this.r = parseFloat(r)/1000.0;
+}
+
+Envelope.prototype.setg = function(g) {
+    this.g = parseFloat(g);
+}
 """
         self.codes["declaration"] = """
 // block_$id$ = $label$
+
 var block_$id$_obj = new Envelope(context, $prop[a]$, $prop[d]$, $prop[s]$, $prop[r]$, $prop[g]$);
 var $port[input]$ = block_$id$_obj.node;
 var $port[output]$ = block_$id$_obj.node;
 
+var $port[a]$ = function(value){
+    block_$id$_obj.seta(value);
+};
+
+var $port[d]$ = function(value){
+    block_$id$_obj.setd(value);
+};
+
+var $port[s]$ = function(value){
+    block_$id$_obj.sets(value);
+};
+
+var $port[r]$ = function(value){
+    block_$id$_obj.setr(value);
+};
+
+var $port[g]$ = function(value){
+    block_$id$_obj.setg(value);
+};
+
 var $port[play]$ = function(value){
-    block_$id$_obj.play();
+    if (value != 0) {
+        block_$id$_obj.play();
+    }
 };
 """
