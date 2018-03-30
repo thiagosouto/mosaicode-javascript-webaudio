@@ -62,6 +62,7 @@ var $port[value]$ = [];
 
 var $port[invalue]$ = function(value){
     document.getElementById("block_$id$").value = value;
+    change_value$id$(value);
     return true;
     };
 
@@ -79,4 +80,3 @@ function change_value$id$(e){
         self.codes["html"] = """
 $prop[label]$ <input type="range" min="$prop[min]$" max="$prop[max]$" onchange="change_value$id$(event);" id="block_$id$"><br>
 """
-
