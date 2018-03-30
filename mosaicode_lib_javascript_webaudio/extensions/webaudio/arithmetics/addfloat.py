@@ -29,7 +29,7 @@ class AddFloat(BlockModel):
                 "conn_type":"Output",
                 "name":"result"}
             ]
-        self.group = "Arithmetics"
+        self.group = "Arithmetidscs"
 
         self.codes["declaration"] = """
 // block_$id$ = Add Float
