@@ -4,3 +4,9 @@ mosaicode_lib_javascript_webaudio.egg-info
 mosaicode_javascript_webaudio.egg-info/
 
 \.idea/
+
+debian/
+
+python/easy_install
+
+python/
