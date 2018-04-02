@@ -24,7 +24,7 @@ config['classifiers'] = [
     'Topic :: Software Development :: Code Generators',
 ]
 
-setup(name='mosaicode_lib_javascript_webaudio',
+setup(name='mosaicode-lib-javascript-webaudio',
       install_requires=['Python>=2.7'],
       tests_require=[],
       test_suite='',
@@ -32,14 +32,16 @@ setup(name='mosaicode_lib_javascript_webaudio',
       packages = find_packages(exclude=["tests.*", "tests"]),
       scripts=[],
       description='Computer Music Programming Tool',
-      author='Mosaicode Group',
+      author='Bits & Beads Research Lab',
       author_email='mosaicode-dev@googlegroups.com',
-      maintainer="Mosaicode Group",
+      maintainer="Bits & Beads Research Lab",
       maintainer_email="mosaicode-dev@googlegroups.com",
       license="GNU GPL3",
       url='https://mosaicode.github.io/',
 
       # this is fucked up! must put it in package_data!!
-      data_files=[],
+      data_files=[
+            ('/usr/share/mosaicode/extensions/mosaicode_lib_javascript_webaudio/examples', glob("examples/*"))
+      ],
       **config
       )
