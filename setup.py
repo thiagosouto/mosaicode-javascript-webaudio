@@ -25,7 +25,7 @@ config['classifiers'] = [
 ]
 
 setup(name='mosaicode-lib-javascript-webaudio',
-      install_requires=['Python>=2.7'],
+      install_requires=['mosaicode'],
       tests_require=[],
       test_suite='',
       version='1.0',
