@@ -6,6 +6,7 @@ This module contains the JavascriptTemplate class.
 """
 from mosaicode.model.codetemplate import CodeTemplate
 
+
 class Html(CodeTemplate):
     """
     This class contains methods related the JavascriptTemplate class.
@@ -18,7 +19,7 @@ class Html(CodeTemplate):
         self.language = "javascript"
         self.description = "Javascript / webaudio code template"
         self.extension = ".html"
-        self.command = "chromium-browser $dir_name$$filename$$extension$\n"
+        self.command = "python -m webbrowser -t $dir_name$$filename$$extension$\n"
         self.code_parts = ["onload", "function", "declaration", "execution", "html"]
         self.code = r"""<html>
 <head>
